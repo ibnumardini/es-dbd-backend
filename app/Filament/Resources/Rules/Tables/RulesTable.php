@@ -31,10 +31,6 @@ class RulesTable
                     ->sortable()
                     ->searchable()
                     ->limit(50),
-                TextColumn::make('logical_operator')
-                    ->formatStateUsing(fn (bool $state): string => $state ? 'AND' : 'OR')
-                    ->badge()
-                    ->color(fn (bool $state): string => $state ? 'success' : 'warning'),
             ])
             ->groups([
                 Group::make('code')

@@ -47,20 +47,14 @@ class MedicalRecord extends Model
         foreach ($ruleGroups as $code => $rules) {
             $disease = $rules->first()->disease;
             
-            // Group rules by logical operator
-            $andRules = $rules->where('logical_operator', 1);
-            $orRules = $rules->where('logical_operator', 0);
+            // Get all symptom IDs required for this rule code
+            $requiredSymptomIds = $rules->pluck('symptom_id')->toArray();
             
-            // Check AND conditions (all must match)
-            $andSymptomIds = $andRules->pluck('symptom_id')->toArray();
-            $andMatch = empty($andSymptomIds) || empty(array_diff($andSymptomIds, $userSymptomIds));
+            // Check if all required symptoms are present in the user's symptoms (AND logic)
+            $isMatch = !empty($requiredSymptomIds) && empty(array_diff($requiredSymptomIds, $userSymptomIds));
             
-            // Check OR conditions (at least one must match)
-            $orSymptomIds = $orRules->pluck('symptom_id')->toArray();
-            $orMatch = empty($orSymptomIds) || !empty(array_intersect($orSymptomIds, $userSymptomIds));
-            
-            // If both conditions are satisfied, return the disease
-            if ($andMatch && $orMatch) {
+            // If all symptoms match, return the disease
+            if ($isMatch) {
                 return $disease;
             }
         }

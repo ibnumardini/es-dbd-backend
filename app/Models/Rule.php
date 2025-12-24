@@ -12,7 +12,6 @@ class Rule extends Model
         'code',
         'disease_id',
         'symptom_id',
-        'logical_operator',
     ];
 
     public function disease(): BelongsTo

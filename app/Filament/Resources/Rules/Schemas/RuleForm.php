@@ -31,13 +31,6 @@ class RuleForm
                     ->searchable()
                     ->preload()
                     ->required(),
-                Select::make('logical_operator')
-                    ->options([
-                        1 => 'AND',
-                        0 => 'OR',
-                    ])
-                    ->required()
-                    ->default(1),
             ]);
     }
 }

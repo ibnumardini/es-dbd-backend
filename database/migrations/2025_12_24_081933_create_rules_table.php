@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('code')->nullable();
             $table->foreignId('disease_id')->constrained('diseases')->cascadeOnDelete();
             $table->foreignId('symptom_id')->constrained('symptoms')->cascadeOnDelete();
-            $table->boolean('logical_operator')->default(1)->comment('1: AND, 0: OR');
             $table->timestamps();
         });
     }
