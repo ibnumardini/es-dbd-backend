@@ -17,43 +17,61 @@ class RuleSeeder extends Seeder
         $date = '2025-12-23 00:00:00'; // Using user provided date for consistency
 
         $rules = [
-            // R1 - Disease 1
-            ['id' => 1, 'code' => 'R1', 'symptom_id' => 1, 'disease_id' => 1, 'created_at' => $date, 'updated_at' => $date],
-            ['id' => 2, 'code' => 'R1', 'symptom_id' => 2, 'disease_id' => 1, 'created_at' => $date, 'updated_at' => $date],
-            ['id' => 3, 'code' => 'R1', 'symptom_id' => 3, 'disease_id' => 1, 'created_at' => $date, 'updated_at' => $date],
-            ['id' => 4, 'code' => 'R1', 'symptom_id' => 4, 'disease_id' => 1, 'created_at' => $date, 'updated_at' => $date],
-            ['id' => 5, 'code' => 'R1', 'symptom_id' => 5, 'disease_id' => 1, 'created_at' => $date, 'updated_at' => $date],
+            // R1 - P1 (Disease ID 1)
+            ['code' => 'R1', 'symptom_id' => 1, 'disease_id' => 1, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R1', 'symptom_id' => 2, 'disease_id' => 1, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R1', 'symptom_id' => 4, 'disease_id' => 1, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R1', 'symptom_id' => 7, 'disease_id' => 1, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R1', 'symptom_id' => 9, 'disease_id' => 1, 'created_at' => $date, 'updated_at' => $date],
 
-            // R2 - Disease 2
-            ['id' => 6, 'code' => 'R2', 'symptom_id' => 1, 'disease_id' => 2, 'created_at' => $date, 'updated_at' => $date],
-            ['id' => 7, 'code' => 'R2', 'symptom_id' => 2, 'disease_id' => 2, 'created_at' => $date, 'updated_at' => $date],
-            ['id' => 8, 'code' => 'R2', 'symptom_id' => 3, 'disease_id' => 2, 'created_at' => $date, 'updated_at' => $date],
-            ['id' => 9, 'code' => 'R2', 'symptom_id' => 4, 'disease_id' => 2, 'created_at' => $date, 'updated_at' => $date],
-            ['id' => 10, 'code' => 'R2', 'symptom_id' => 5, 'disease_id' => 2, 'created_at' => $date, 'updated_at' => $date],
-            ['id' => 11, 'code' => 'R2', 'symptom_id' => 6, 'disease_id' => 2, 'created_at' => $date, 'updated_at' => $date],
-            ['id' => 12, 'code' => 'R2', 'symptom_id' => 7, 'disease_id' => 2, 'created_at' => $date, 'updated_at' => $date],
-            ['id' => 13, 'code' => 'R2', 'symptom_id' => 8, 'disease_id' => 2, 'created_at' => $date, 'updated_at' => $date],
-            ['id' => 14, 'code' => 'R2', 'symptom_id' => 9, 'disease_id' => 2, 'created_at' => $date, 'updated_at' => $date],
-            ['id' => 15, 'code' => 'R2', 'symptom_id' => 10, 'disease_id' => 2, 'created_at' => $date, 'updated_at' => $date],
-            ['id' => 16, 'code' => 'R2', 'symptom_id' => 11, 'disease_id' => 2, 'created_at' => $date, 'updated_at' => $date],
-            ['id' => 17, 'code' => 'R2', 'symptom_id' => 12, 'disease_id' => 2, 'created_at' => $date, 'updated_at' => $date],
-            ['id' => 18, 'code' => 'R2', 'symptom_id' => 13, 'disease_id' => 2, 'created_at' => $date, 'updated_at' => $date],
-            
-            // R3 - Disease 3 (Sample)
-            // Assuming logical_operator 1 (AND) for simplicity or mixed if valid
-            ['id' => 19, 'code' => 'R3', 'symptom_id' => 2, 'disease_id' => 3, 'created_at' => $now, 'updated_at' => $now],
-            ['id' => 20, 'code' => 'R3', 'symptom_id' => 4, 'disease_id' => 3, 'created_at' => $now, 'updated_at' => $now],
-            ['id' => 21, 'code' => 'R3', 'symptom_id' => 14, 'disease_id' => 3, 'created_at' => $now, 'updated_at' => $now],
-            ['id' => 22, 'code' => 'R3', 'symptom_id' => 15, 'disease_id' => 3, 'created_at' => $now, 'updated_at' => $now],
+            // R2 - P2 (Disease ID 2)
+            ['code' => 'R2', 'symptom_id' => 1, 'disease_id' => 2, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R2', 'symptom_id' => 2, 'disease_id' => 2, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R2', 'symptom_id' => 3, 'disease_id' => 2, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R2', 'symptom_id' => 5, 'disease_id' => 2, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R2', 'symptom_id' => 7, 'disease_id' => 2, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R2', 'symptom_id' => 8, 'disease_id' => 2, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R2', 'symptom_id' => 9, 'disease_id' => 2, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R2', 'symptom_id' => 13, 'disease_id' => 2, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R2', 'symptom_id' => 14, 'disease_id' => 2, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R2', 'symptom_id' => 15, 'disease_id' => 2, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R2', 'symptom_id' => 16, 'disease_id' => 2, 'created_at' => $date, 'updated_at' => $date],
 
-            // R4 - Disease 4 (Sample)
-            ['id' => 23, 'code' => 'R4', 'symptom_id' => 1, 'disease_id' => 4, 'created_at' => $now, 'updated_at' => $now],
-            ['id' => 24, 'code' => 'R4', 'symptom_id' => 14, 'disease_id' => 4, 'created_at' => $now, 'updated_at' => $now],
-            ['id' => 25, 'code' => 'R4', 'symptom_id' => 16, 'disease_id' => 4, 'created_at' => $now, 'updated_at' => $now],
-            ['id' => 26, 'code' => 'R4', 'symptom_id' => 17, 'disease_id' => 4, 'created_at' => $now, 'updated_at' => $now],
-            ['id' => 27, 'code' => 'R4', 'symptom_id' => 18, 'disease_id' => 4, 'created_at' => $now, 'updated_at' => $now],
+            // R3 - P3 (Disease ID 3)
+            ['code' => 'R3', 'symptom_id' => 1, 'disease_id' => 3, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R3', 'symptom_id' => 2, 'disease_id' => 3, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R3', 'symptom_id' => 3, 'disease_id' => 3, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R3', 'symptom_id' => 4, 'disease_id' => 3, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R3', 'symptom_id' => 6, 'disease_id' => 3, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R3', 'symptom_id' => 7, 'disease_id' => 3, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R3', 'symptom_id' => 8, 'disease_id' => 3, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R3', 'symptom_id' => 9, 'disease_id' => 3, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R3', 'symptom_id' => 13, 'disease_id' => 3, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R3', 'symptom_id' => 14, 'disease_id' => 3, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R3', 'symptom_id' => 15, 'disease_id' => 3, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R3', 'symptom_id' => 16, 'disease_id' => 3, 'created_at' => $date, 'updated_at' => $date],
+
+            // R4 - P4 (Disease ID 4)
+            ['code' => 'R4', 'symptom_id' => 1, 'disease_id' => 4, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R4', 'symptom_id' => 2, 'disease_id' => 4, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R4', 'symptom_id' => 3, 'disease_id' => 4, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R4', 'symptom_id' => 4, 'disease_id' => 4, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R4', 'symptom_id' => 6, 'disease_id' => 4, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R4', 'symptom_id' => 7, 'disease_id' => 4, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R4', 'symptom_id' => 8, 'disease_id' => 4, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R4', 'symptom_id' => 9, 'disease_id' => 4, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R4', 'symptom_id' => 10, 'disease_id' => 4, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R4', 'symptom_id' => 11, 'disease_id' => 4, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R4', 'symptom_id' => 12, 'disease_id' => 4, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R4', 'symptom_id' => 13, 'disease_id' => 4, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R4', 'symptom_id' => 14, 'disease_id' => 4, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R4', 'symptom_id' => 15, 'disease_id' => 4, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R4', 'symptom_id' => 16, 'disease_id' => 4, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R4', 'symptom_id' => 17, 'disease_id' => 4, 'created_at' => $date, 'updated_at' => $date],
+            ['code' => 'R4', 'symptom_id' => 18, 'disease_id' => 4, 'created_at' => $date, 'updated_at' => $date],
         ];
 
-        DB::table('rules')->insertOrIgnore($rules);
+        DB::table('rules')->truncate();
+        DB::table('rules')->insert($rules);
     }
 }
