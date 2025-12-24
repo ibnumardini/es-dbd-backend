@@ -14,20 +14,25 @@ class UserForm
         return $schema
             ->components([
                 TextInput::make('name')
+                    ->label('Name')
                     ->required(),
                 TextInput::make('email')
+                    ->label('Email')
                     ->email()
                     ->required()
                     ->unique(ignoreRecord: true),
                 TextInput::make('password')
+                    ->label('Password')
                     ->password()
-                    ->dehydrated(fn ($state) => filled($state))
-                    ->required(fn (string $context): bool => $context === 'create')
+                    ->dehydrated(fn($state) => filled($state))
+                    ->required(fn(string $context): bool => $context === 'create')
                     ->confirmed(),
                 TextInput::make('password_confirmation')
+                    ->label('Password Confirmation')
                     ->password()
                     ->dehydrated(false),
                 DatePicker::make('date_of_birth')
+                    ->label('Date Of Birth')
                     ->required()
                     ->maxDate(now()),
             ]);

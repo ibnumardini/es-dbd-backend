@@ -13,9 +13,11 @@ class SymptomForm
         return $schema
             ->components([
                 TextInput::make('code')
+                    ->label('Code')
                     ->required()
                     ->unique(ignoreRecord: true),
                 TextInput::make('name')
+                    ->label('Name')
                     ->required(),
             ]);
     }

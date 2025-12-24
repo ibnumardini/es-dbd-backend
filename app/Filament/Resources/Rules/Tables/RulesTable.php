@@ -17,17 +17,18 @@ class RulesTable
         return $table
             ->columns([
                 TextColumn::make('code')
+                    ->label('Code')
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('disease.name')
-                    ->label('Disease')
-                    ->formatStateUsing(fn ($record) => "{$record->disease->code} - {$record->disease->name}")
+                    ->label('Disease Name')
+                    ->formatStateUsing(fn($record) => "{$record->disease->code} - {$record->disease->name}")
                     ->sortable()
                     ->searchable()
                     ->limit(50),
                 TextColumn::make('symptom.name')
-                    ->label('Symptom')
-                    ->formatStateUsing(fn ($record) => "{$record->symptom->code} - {$record->symptom->name}")
+                    ->label('Symptom Name')
+                    ->formatStateUsing(fn($record) => "{$record->symptom->code} - {$record->symptom->name}")
                     ->sortable()
                     ->searchable()
                     ->limit(50),

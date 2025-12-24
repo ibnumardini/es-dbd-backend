@@ -32,6 +32,7 @@ class MedicalRecordForm
                     ->columnSpanFull()
                     ->visible(fn($record) => $record !== null),
                 Select::make('user_id')
+                    ->label('Patient')
                     ->relationship('user', 'name')
                     ->searchable()
                     ->preload()
@@ -41,6 +42,7 @@ class MedicalRecordForm
                     ->columnSpanFull()
                     ->dehydrated(),
                 Repeater::make('userSymptoms')
+                    ->label('User Symptoms')
                     ->relationship()
                     ->schema([
                         Select::make('symptom_id')

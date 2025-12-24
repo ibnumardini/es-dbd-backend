@@ -19,20 +19,22 @@ class MedicalRecordsTable
                     ->label('Patient Code')
                     ->sortable(),
                 TextColumn::make('user.name')
+                    ->label('Patient Name')
                     ->searchable()
                     ->sortable()
                     ->limit(50),
                 TextColumn::make('diagnosed_disease_name')
                     ->label('Diagnosed Disease')
-                    ->getStateUsing(fn ($record) => $record->getDiagnosedDiseaseName())
+                    ->getStateUsing(fn($record) => $record->getDiagnosedDiseaseName())
                     ->badge()
-                    ->color(fn ($state) => str_starts_with($state, 'F -') ? 'danger' : 'success')
+                    ->color(fn($state) => str_starts_with($state, 'F -') ? 'danger' : 'success')
                     ->limit(50),
                 TextColumn::make('created_at')
                     ->label('Checkup At')
                     ->dateTime()
                     ->sortable(),
                 TextColumn::make('updated_at')
+                    ->label('Updated At')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

@@ -16,13 +16,16 @@ class SymptomsTable
         return $table
             ->columns([
                 TextColumn::make('code')
+                    ->label('Code')
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('name')
+                    ->label('Name')
                     ->sortable()
                     ->searchable()
                     ->limit(50),
                 TextColumn::make('created_at')
+                    ->label('Created At')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

@@ -16,16 +16,21 @@ class UsersTable
         return $table
             ->columns([
                 TextColumn::make('name')
+                    ->label('Name')
                     ->searchable(),
                 TextColumn::make('email')
+                    ->label('Email')
                     ->searchable(),
                 TextColumn::make('code')
+                    ->label('Code')
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('date_of_birth')
+                    ->label('Date Of Birth')
                     ->date()
                     ->sortable(),
                 TextColumn::make('created_at')
+                    ->label('Created At')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

@@ -14,6 +14,7 @@ class RuleForm
         return $schema
             ->components([
                 Select::make('code')
+                    ->label('Rule Code')
                     ->options([
                         'R1' => 'R1',
                         'R2' => 'R2',
@@ -22,11 +23,13 @@ class RuleForm
                     ])
                     ->required(),
                 Select::make('disease_id')
+                    ->label('Disease')
                     ->relationship('disease', 'name')
                     ->searchable()
                     ->preload()
                     ->required(),
                 Select::make('symptom_id')
+                    ->label('Symptom')
                     ->relationship('symptom', 'name')
                     ->searchable()
                     ->preload()

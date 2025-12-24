@@ -15,6 +15,7 @@ class Register extends BaseRegister
                 $this->getNameFormComponent(),
                 $this->getEmailFormComponent(),
                 DatePicker::make('date_of_birth')
+                    ->label('Date Of Birth')
                     ->required()
                     ->maxDate(now()),
                 $this->getPasswordFormComponent(),
