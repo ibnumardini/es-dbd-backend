@@ -4,6 +4,8 @@ namespace App\Filament\Resources\MedicalRecords\Schemas;
 
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
+use Filament\Schemas\Components\Section;
+use Filament\Infolists\Components\TextEntry;
 use Filament\Schemas\Schema;
 
 class MedicalRecordForm
@@ -12,6 +14,23 @@ class MedicalRecordForm
     {
         return $schema
             ->components([
+                Section::make('Detail Information')
+                    ->schema([
+                        TextEntry::make('patient_code')
+                            ->label('Patient Code')
+                            ->state(fn($record) => $record?->user?->code ?? '-'),
+                        TextEntry::make('diagnosed_disease')
+                            ->label('Diagnosed Disease')
+                            ->state(fn($record) => $record?->getDiagnosedDiseaseName() ?? '-')
+                            ->badge()
+                            ->color(fn($state) => str_starts_with($state, 'F -') ? 'danger' : 'success'),
+                        TextEntry::make('checkup_at')
+                            ->label('Checkup At')
+                            ->state(fn($record) => $record?->created_at?->format('d M Y H:i') ?? '-'),
+                    ])
+                    ->columns(3)
+                    ->columnSpanFull()
+                    ->visible(fn($record) => $record !== null),
                 Select::make('user_id')
                     ->relationship('user', 'name')
                     ->searchable()
@@ -19,6 +38,7 @@ class MedicalRecordForm
                     ->required()
                     ->default(auth()->id())
                     ->hidden(!auth()->user()->isAdmin())
+                    ->columnSpanFull()
                     ->dehydrated(),
                 Repeater::make('userSymptoms')
                     ->relationship()
@@ -26,7 +46,7 @@ class MedicalRecordForm
                         Select::make('symptom_id')
                             ->label('Symptom')
                             ->relationship('symptom', 'name')
-                            ->getOptionLabelFromRecordUsing(fn ($record) => "{$record->code} - {$record->name}")
+                            ->getOptionLabelFromRecordUsing(fn($record) => "{$record->code} - {$record->name}")
                             ->searchable()
                             ->preload()
                             ->required()
@@ -36,6 +56,7 @@ class MedicalRecordForm
                     ->columns(1)
                     ->defaultItems(1)
                     ->addActionLabel('Add Symptom')
+                    ->columnSpanFull()
                     ->required(),
             ]);
     }
