@@ -40,8 +40,6 @@ class RulesTable
                 Group::make('code')
                     ->label('Code')
                     ->collapsible(),
-                Group::make('disease.name')
-                    ->label('Disease'),
             ])
             ->defaultGroup('code')
             ->filters([
