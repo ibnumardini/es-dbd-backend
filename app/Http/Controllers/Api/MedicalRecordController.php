@@ -24,7 +24,7 @@ class MedicalRecordController extends Controller
                 'patient_name' => $record->user->name,
                 'diagnosed_disease' => $record->getDiagnosedDiseaseName(),
                 'checkup_at' => $record->created_at->toDateTimeString(),
-                'symptoms' => $record->userSymptoms->map(fn($us) => $us->symptom->name)->values(),
+                'symptoms' => $record->userSymptoms->map(fn($us) => "{$us->symptom->code} - {$us->symptom->name}")->values(),
             ];
         });
 

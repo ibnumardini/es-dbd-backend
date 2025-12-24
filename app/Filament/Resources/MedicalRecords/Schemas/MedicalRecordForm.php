@@ -26,6 +26,7 @@ class MedicalRecordForm
                         Select::make('symptom_id')
                             ->label('Symptom')
                             ->relationship('symptom', 'name')
+                            ->getOptionLabelFromRecordUsing(fn ($record) => "{$record->code} - {$record->name}")
                             ->searchable()
                             ->preload()
                             ->required()
