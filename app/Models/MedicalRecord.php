@@ -34,7 +34,7 @@ class MedicalRecord extends Model
     {
         // Get user's symptom IDs
         $userSymptomIds = $this->userSymptoms()->pluck('symptom_id')->toArray();
-        
+
         if (empty($userSymptomIds)) {
             return null;
         }
@@ -44,22 +44,38 @@ class MedicalRecord extends Model
             ->get()
             ->groupBy('code');
 
+        $matchedDiseases = [];
+
         foreach ($ruleGroups as $code => $rules) {
             $disease = $rules->first()->disease;
-            
+
             // Get all symptom IDs required for this rule code
             $requiredSymptomIds = $rules->pluck('symptom_id')->toArray();
-            
+
             // Check if all required symptoms are present in the user's symptoms (AND logic)
             $isMatch = !empty($requiredSymptomIds) && empty(array_diff($requiredSymptomIds, $userSymptomIds));
-            
-            // If all symptoms match, return the disease
+
+            // If all symptoms match, store the disease with its symptom count
             if ($isMatch) {
-                return $disease;
+                $matchedDiseases[] = [
+                    'disease' => $disease,
+                    'symptom_count' => count($requiredSymptomIds)
+                ];
             }
         }
 
-        return null;
+        // If no matches found, return null
+        if (empty($matchedDiseases)) {
+            return null;
+        }
+
+        // Sort by symptom count descending to get the most specific diagnosis
+        usort($matchedDiseases, function ($a, $b) {
+            return $b['symptom_count'] <=> $a['symptom_count'];
+        });
+
+        // Return the disease with the most symptoms (most specific)
+        return $matchedDiseases[0]['disease'];
     }
 
     /**
