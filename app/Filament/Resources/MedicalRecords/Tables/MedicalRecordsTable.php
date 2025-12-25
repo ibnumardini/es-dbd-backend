@@ -23,6 +23,11 @@ class MedicalRecordsTable
                     ->searchable()
                     ->sortable()
                     ->limit(50),
+                TextColumn::make('user.age')
+                    ->label('Age')
+                    ->suffix(' years')
+                    ->sortable()
+                    ->default('-'),
                 TextColumn::make('diagnosed_disease_name')
                     ->label('Diagnosed Disease')
                     ->getStateUsing(fn($record) => $record->getDiagnosedDiseaseName())

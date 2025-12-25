@@ -12,7 +12,7 @@ class MedicalRecordController extends Controller
     {
         $user = $request->user();
         
-        $records = MedicalRecord::with(['user:id,name,code', 'userSymptoms.symptom:id,name,code'])
+        $records = MedicalRecord::with(['user:id,name,code,date_of_birth', 'userSymptoms.symptom:id,name,code'])
             ->where('user_id', $user->id)
             ->latest()
             ->get();
@@ -22,6 +22,7 @@ class MedicalRecordController extends Controller
                 'id' => $record->id,
                 'patient_code' => $record->user->code,
                 'patient_name' => $record->user->name,
+                'patient_age' => $record->user->age,
                 'diagnosed_disease' => $record->getDiagnosedDiseaseName(),
                 'checkup_at' => $record->created_at->toDateTimeString(),
                 'symptoms' => $record->userSymptoms->map(fn($us) => "{$us->symptom->code} - {$us->symptom->name}")->values(),
@@ -50,10 +51,15 @@ class MedicalRecordController extends Controller
             ]);
         }
 
+        $record->load('user:id,name,code,date_of_birth');
+
         return response()->json([
             'message' => 'Medical record created successfully',
             'record' => [
                 'id' => $record->id,
+                'patient_code' => $record->user->code,
+                'patient_name' => $record->user->name,
+                'patient_age' => $record->user->age,
                 'diagnosed_disease' => $record->getDiagnosedDiseaseName(),
                 'checkup_at' => $record->created_at->toDateTimeString(),
             ]

@@ -19,6 +19,9 @@ class MedicalRecordForm
                         TextEntry::make('patient_code')
                             ->label('Patient Code')
                             ->state(fn($record) => $record?->user?->code ?? '-'),
+                        TextEntry::make('patient_age')
+                            ->label('Age')
+                            ->state(fn($record) => $record?->user?->age ? $record->user->age . ' years' : '-'),
                         TextEntry::make('diagnosed_disease')
                             ->label('Diagnosed Disease')
                             ->state(fn($record) => $record?->getDiagnosedDiseaseName() ?? '-')
@@ -28,7 +31,7 @@ class MedicalRecordForm
                             ->label('Checkup At')
                             ->state(fn($record) => $record?->created_at?->format('d M Y H:i') ?? '-'),
                     ])
-                    ->columns(3)
+                    ->columns(4)
                     ->columnSpanFull()
                     ->visible(fn($record) => $record !== null),
                 Select::make('user_id')

@@ -29,6 +29,11 @@ class UsersTable
                     ->label('Date Of Birth')
                     ->date()
                     ->sortable(),
+                TextColumn::make('age')
+                    ->label('Age')
+                    ->suffix(' years')
+                    ->sortable()
+                    ->default('-'),
                 TextColumn::make('created_at')
                     ->label('Created At')
                     ->dateTime()

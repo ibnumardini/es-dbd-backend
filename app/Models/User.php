@@ -62,7 +62,20 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'date_of_birth' => 'date',
         ];
+    }
+
+    /**
+     * Get user's age in years calculated from date of birth
+     */
+    public function getAgeAttribute(): ?int
+    {
+        if (!$this->date_of_birth) {
+            return null;
+        }
+
+        return $this->date_of_birth->diffInYears(now());
     }
 
     protected static function booted(): void
