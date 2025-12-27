@@ -12,7 +12,7 @@ class MedicalRecordController extends Controller
     public function index(Request $request)
     {
         $user = $request->user();
-        
+
         $records = MedicalRecord::with(['user:id,name,code,date_of_birth', 'userSymptoms.symptom:id,name,code'])
             ->where('user_id', $user->id)
             ->latest()
@@ -61,7 +61,8 @@ class MedicalRecordController extends Controller
                 'patient_code' => $record->user->code,
                 'patient_name' => $record->user->name,
                 'patient_age' => $record->user->age,
-                'diagnosed_disease' => Str::limit($record->getDiagnosedDiseaseName(), 50),
+                'diagnosed_disease' => $record->getDiagnosedDiseaseName(),
+                'diagnosed_disease_limit' => Str::limit($record->getDiagnosedDiseaseName(), 50),
                 'checkup_at' => $record->created_at->toDateTimeString(),
             ]
         ], 201);
