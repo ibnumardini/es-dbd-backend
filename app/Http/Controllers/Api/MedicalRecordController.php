@@ -24,7 +24,8 @@ class MedicalRecordController extends Controller
                 'patient_code' => $record->user->code,
                 'patient_name' => $record->user->name,
                 'patient_age' => $record->user->age,
-                'diagnosed_disease' => Str::limit($record->getDiagnosedDiseaseName(), 50),
+                'diagnosed_disease' => $record->getDiagnosedDiseaseName(),
+                'diagnosed_disease_limit' => Str::limit($record->getDiagnosedDiseaseName(), 50),
                 'checkup_at' => $record->created_at->toDateTimeString(),
                 'symptoms' => $record->userSymptoms->map(fn($us) => "{$us->symptom->code} - {$us->symptom->name}")->values(),
             ];
